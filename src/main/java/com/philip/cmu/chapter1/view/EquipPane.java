@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -114,7 +115,13 @@ public class EquipPane extends ScrollPane {
                 onDragDropped(event,armorLbl,armorImgGroup);
             }
         });
-        //TODO: Allow Only Weapons with the same Damatype as Character to be equipped.
+        //TODO: Allow Only Weapons with the same Damatype as Character to be equipped
+        weaponImgGroup.setOnMouseReleased(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+
+            }
+        });
 
         Button unequipAllButton = new Button("Unequip All");
         unequipAllButton.setOnAction(event -> onUnequipAll());
