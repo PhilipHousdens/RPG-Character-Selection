@@ -128,6 +128,7 @@ public class EquipPane extends ScrollPane {
 
         Button unequipAllButton = new Button("Unequip All");
         unequipAllButton.setOnAction(new EventHandler<ActionEvent>() {
+            //TODO: make it so that it goes back to the inventory
             @Override
             public void handle(ActionEvent event) {
                 BasedCharacter oldCharacter = Launcher.getMainCharacter();
@@ -138,7 +139,6 @@ public class EquipPane extends ScrollPane {
                     Launcher.setEquippedWeapon(null);
                 }
                 if (Launcher.getEquippedArmor() != null) {
-
                     oldCharacter.unequipArmor();
                     Launcher.setEquippedArmor(null);
                 }
@@ -150,10 +150,6 @@ public class EquipPane extends ScrollPane {
 
         return equipmentInfoPane;
     }
-
-
-    //TODO: its still in the slot when regenerate character.
-    //TODO: Make its so that Item goes back in the inventory.
 
 
 
