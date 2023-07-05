@@ -39,7 +39,7 @@ public class InventoryPane extends ScrollPane{
                 imageViewsList[i].setOnDragDone(new EventHandler<DragEvent>() {
                     @Override
                     public void handle(DragEvent event) {
-                        onEquipDone(event);
+                        onEquipDone(event, InventoryPane.this);
                     }
                 });
             }
@@ -47,8 +47,11 @@ public class InventoryPane extends ScrollPane{
         }
         return inventoryInfoPane;
     }
-    public void addToInventory(ArrayList<BasedEqiupment> arrayList) {
-        eqiupmentArray.addAll(arrayList);
+    public void addItem(BasedEqiupment eqiupment) {
+        if (!eqiupmentArray.contains(eqiupment)) {
+            eqiupmentArray.add(eqiupment);
+            drawPane(eqiupmentArray);
+        }
     }
     public void drawPane(ArrayList<BasedEqiupment> eqiupmentArray) {
         this.eqiupmentArray = eqiupmentArray;

@@ -86,7 +86,7 @@ public class AllCustomHandler {
     public AllCustomHandler() {
 
     }
-    public static void onEquipDone(DragEvent event) {
+    public static void onEquipDone(DragEvent event, InventoryPane inventoryPane) {
         Dragboard dragboard = event.getDragboard();
         ArrayList<BasedEqiupment> allEquipments = Launcher.getAllEquipments();
         BasedEqiupment retrievedEquipment = (BasedEqiupment) dragboard.getContent(BasedEqiupment.DATA_FORMAT);
@@ -103,6 +103,9 @@ public class AllCustomHandler {
         }
         Launcher.setAllEquipments(allEquipments);
         Launcher.refreshPane();
+
+        //Adding the Item back to the inventory
+        inventoryPane.addItem(retrievedEquipment);
     }
 
 
