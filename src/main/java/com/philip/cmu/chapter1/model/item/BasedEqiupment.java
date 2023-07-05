@@ -3,8 +3,9 @@ package com.philip.cmu.chapter1.model.item;
 import javafx.scene.input.DataFormat;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
-public class BasedEqiupment implements Serializable {
+public class BasedEqiupment extends ArrayList<BasedEqiupment> implements Serializable {
     public static final DataFormat DATA_FORMAT = new DataFormat("src.main.java.com.philip.cmu.chapter1.model.item.BasedEquipment");
     protected String name;
     protected String imgpath;

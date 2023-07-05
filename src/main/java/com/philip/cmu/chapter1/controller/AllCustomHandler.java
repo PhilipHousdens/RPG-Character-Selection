@@ -1,12 +1,11 @@
 package com.philip.cmu.chapter1.controller;
 
 import com.philip.cmu.chapter1.Launcher;
-import com.philip.cmu.chapter1.model.DamageType;
 import com.philip.cmu.chapter1.model.character.BasedCharacter;
 import com.philip.cmu.chapter1.model.item.Armor;
 import com.philip.cmu.chapter1.model.item.BasedEqiupment;
 import com.philip.cmu.chapter1.model.item.Weapon;
-import com.philip.cmu.chapter1.view.EquipPane;
+import com.philip.cmu.chapter1.view.InventoryPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
@@ -14,11 +13,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.StackPane;
+
 import java.util.ArrayList;
-import java.util.function.LongUnaryOperator;
+
 
 
 public class AllCustomHandler {
+    static InventoryPane InP = new InventoryPane();
     public static class GenCharacterHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
@@ -80,9 +81,6 @@ public class AllCustomHandler {
         event.setDropCompleted(dragCompleted);
 
     }
-    public static void setBackOrigin(MouseEvent mouseEvent) {
-
-    }
 
 
     public AllCustomHandler() {
@@ -103,13 +101,10 @@ public class AllCustomHandler {
         if (pos != -1) {
             allEquipments.remove(pos);
         }
-        // TODO: If dropping an item out of the item slot, put it back to the inventory list. //Check
-        // TOIMPROVE: Its do what its suppose to do now. However, it also do the same thing when the item is in the slot.
-        allEquipments.add(retrievedEquipment);
-
         Launcher.setAllEquipments(allEquipments);
         Launcher.refreshPane();
     }
+
 
 
 }

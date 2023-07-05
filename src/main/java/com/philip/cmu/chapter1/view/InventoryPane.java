@@ -47,6 +47,9 @@ public class InventoryPane extends ScrollPane{
         }
         return inventoryInfoPane;
     }
+    public void addToInventory(ArrayList<BasedEqiupment> arrayList) {
+        eqiupmentArray.addAll(arrayList);
+    }
     public void drawPane(ArrayList<BasedEqiupment> eqiupmentArray) {
         this.eqiupmentArray = eqiupmentArray;
         Pane invetoryInfo = getDetailsPane();

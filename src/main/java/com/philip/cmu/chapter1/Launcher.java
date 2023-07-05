@@ -21,7 +21,7 @@ public class Launcher extends Application {
 
     private static Scene mainScene;
     private static BasedCharacter mainCharacter = null;
-    private static ArrayList<BasedEqiupment> allEquipments = null;
+    private static ArrayList<BasedEqiupment> allEquipments;
     private static Weapon equippedWeapon = null;
     private static Armor equippedArmor = null;
     private static Weapon unequippedWeapon = null;

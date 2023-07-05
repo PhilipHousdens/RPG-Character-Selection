@@ -26,6 +26,7 @@ import static com.philip.cmu.chapter1.controller.AllCustomHandler.*;
 
 
 public class EquipPane extends ScrollPane {
+    InventoryPane inventoryPane = new InventoryPane();
     public static Weapon getEquippedWeapon() {
         return equippedWeapon;
     }
@@ -131,10 +132,11 @@ public class EquipPane extends ScrollPane {
     }
 
 
-    //TODO: Add a button to unequipped all the equipments.
-    //TODO: Its can unequipped the euipment now. However its still in the slot when regenerate character.
+    //TODO: its still in the slot when regenerate character.
     //TODO: Make its so that Item goes back in the inventory.
     public void onUnequipAll() {
+        inventoryPane.addToInventory(equippedWeapon);
+        inventoryPane.addToInventory(equippedArmor);
 
         equippedWeapon = null;
         equippedArmor = null;

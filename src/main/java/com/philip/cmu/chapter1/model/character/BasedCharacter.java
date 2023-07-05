@@ -22,6 +22,20 @@ public class BasedCharacter {
         this.defense = this.basedDef + armor.getDefense();
         this.resistance = this.basedRes + armor.getResistance();
     }
+    public void unequipWeapon() {
+        if (this.weapon != null) {
+            this.power -= this.weapon.getPower(); // Reduce the power by the equipped weapon's power
+            this.weapon = null;
+        }
+    }
+
+    public void unequipArmor() {
+        if (this.armor != null) {
+            this.defense -= this.armor.getDefense(); // Reduce the defense by the equipped armor's defense
+            this.resistance -= this.armor.getResistance(); // Reduce the resistance by the equipped armor's resistance
+            this.armor = null;
+        }
+    }
     public String getName() {return name;}
 
     public String getImgpath() {
