@@ -1,6 +1,7 @@
 package com.philip.cmu.chapter1.view;
 
 import com.philip.cmu.chapter1.Launcher;
+import com.philip.cmu.chapter1.controller.AllCustomHandler;
 import com.philip.cmu.chapter1.controller.GenCharacter;
 import com.philip.cmu.chapter1.model.character.BasedCharacter;
 import com.philip.cmu.chapter1.model.item.Armor;
@@ -127,25 +128,7 @@ public class EquipPane extends ScrollPane {
         });
 
         Button unequipAllButton = new Button("Unequipped All");
-        unequipAllButton.setOnAction(new EventHandler<ActionEvent>() {
-            //TODO: make it so that it goes back to the inventory
-            @Override
-            public void handle(ActionEvent event) {
-                BasedCharacter oldCharacter = Launcher.getMainCharacter();
-                BasedCharacter newCharacter = GenCharacter.setUpCharacter();
-
-                if (Launcher.getEquippedWeapon() != null) {
-                    oldCharacter.unequipWeapon();
-                    Launcher.setEquippedWeapon(null);
-                }
-                if (Launcher.getEquippedArmor() != null) {
-                    oldCharacter.unequipArmor();
-                    Launcher.setEquippedArmor(null);
-                }
-                Launcher.refreshPane();
-
-            }
-        });
+        unequipAllButton.setOnAction(event -> AllCustomHandler.unEquipped());
         equipmentInfoPane.getChildren().addAll(weaponLbl, weaponImgGroup, armorLbl, armorImgGroup, unequipAllButton);
         return equipmentInfoPane;
     }

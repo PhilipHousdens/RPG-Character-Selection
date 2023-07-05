@@ -87,6 +87,21 @@ public class AllCustomHandler {
     public AllCustomHandler() {
 
     }
+    public static void unEquipped() {
+        BasedCharacter oldCharacter = Launcher.getMainCharacter();
+        BasedCharacter newCharacter = GenCharacter.setUpCharacter();
+
+        if (Launcher.getEquippedWeapon() != null) {
+            oldCharacter.unequipWeapon();
+            Launcher.setEquippedWeapon(null);
+        }
+        if (Launcher.getEquippedArmor() != null) {
+            oldCharacter.unequipArmor();
+            Launcher.setEquippedArmor(null);
+        }
+        Launcher.refreshPane();
+
+    }
     public static void onEquipDone(DragEvent event, InventoryPane inventoryPane) {
         Dragboard dragboard = event.getDragboard();
         ArrayList<BasedEqiupment> allEquipments = Launcher.getAllEquipments();
