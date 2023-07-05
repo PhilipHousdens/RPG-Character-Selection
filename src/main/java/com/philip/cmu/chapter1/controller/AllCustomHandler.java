@@ -25,7 +25,7 @@ public class AllCustomHandler {
         @Override
         public void handle(ActionEvent event) {
             Launcher.setMainCharacter(GenCharacter.setUpCharacter());
-
+            unEquipped();
             Launcher.refreshPane();
         }
     }
@@ -47,7 +47,7 @@ public class AllCustomHandler {
         }
     }
 
-    public static void onDragDropped(DragEvent event, Label lbl, StackPane imgGroup) {
+    public static void onDragDropped(DragEvent event, Label lbl, StackPane imgGroup, InventoryPane inventoryPane) {
         boolean dragCompleted = false;
         Dragboard dragboard = event.getDragboard();
         ArrayList<BasedEqiupment> allEquipments= Launcher.getAllEquipments();
@@ -83,7 +83,7 @@ public class AllCustomHandler {
         event.setDropCompleted(dragCompleted);
         if (!dragCompleted) {
             BasedEqiupment retrievedEquipment = (BasedEqiupment) dragboard.getContent(BasedEqiupment.DATA_FORMAT);
-            InP.addItem(retrievedEquipment);
+            inventoryPane.addItem(retrievedEquipment);
         }
     }
 
@@ -103,6 +103,15 @@ public class AllCustomHandler {
             oldCharacter.unequipArmor();
             Launcher.setEquippedArmor(null);
         }
+        if (Launcher.getEquippedWeapon() != null) {
+            newCharacter.unequipWeapon();
+            Launcher.setEquippedWeapon(null);
+        }
+        if (Launcher.getEquippedArmor() != null) {
+            newCharacter.unequipArmor();
+            Launcher.setEquippedArmor(null);
+        }
+        Launcher.setMainCharacter(newCharacter);
         Launcher.refreshPane();
 
     }
@@ -129,7 +138,7 @@ public class AllCustomHandler {
     }
     public static boolean checkClassCompatibility(BasedCharacter chr, BasedEqiupment item) {
         boolean check = false;
-        if (chr.getName().equals("MagicChar1")) {
+        if (chr.getName().equals("MagicalChar1")) {
             if (item.getClass().getSimpleName().equals("Weapon")) {
                 check = ((Weapon) item).getDamageType().equals(DamageType.magical);
             } else {
@@ -143,7 +152,7 @@ public class AllCustomHandler {
                 check = true;
             }
         }
-        if (chr.getName().equals("BattleMageChar1")) {
+        if (chr.getName().equals("BattleMage1")) {
             if (item.getClass().getSimpleName().equals("Weapon")) {
                 check = true;
             } else {

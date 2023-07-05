@@ -1,6 +1,7 @@
 package com.philip.cmu.chapter1.view;
 
 import com.philip.cmu.chapter1.Launcher;
+import com.philip.cmu.chapter1.controller.AllCustomHandler;
 import com.philip.cmu.chapter1.model.item.BasedEqiupment;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -46,6 +47,9 @@ public class InventoryPane extends ScrollPane{
             inventoryInfoPane.getChildren().addAll(imageViewsList);
         }
         return inventoryInfoPane;
+    }
+    private void onDragDropped(DragEvent event, BasedEqiupment eqiupment) {
+        AllCustomHandler.onDragDropped(event,null,null,this);
     }
     public void addItem(BasedEqiupment eqiupment) {
         if (!eqiupmentArray.contains(eqiupment)) {

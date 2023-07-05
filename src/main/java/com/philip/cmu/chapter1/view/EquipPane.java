@@ -97,35 +97,39 @@ public class EquipPane extends ScrollPane {
 
         weaponImgGroup.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
-            public void handle(DragEvent event) {
-                onDragOver(event, "Weapon");
-            }
+            public void handle(DragEvent e) {onDragOver(e, "Weapon");}
         });
         armorImgGroup.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
-            public void handle(DragEvent event) {
-                onDragOver(event,"Armor");
-            }
+            public void handle(DragEvent e) {onDragOver(e,"Armor");}
         });
         weaponImgGroup.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
-            public void handle(DragEvent event) {
-                onDragDropped(event,weaponLbl,weaponImgGroup);
+            public void handle(DragEvent e) {
+                AllCustomHandler.onDragDropped(e, weaponLbl, weaponImgGroup, inventoryPane);
             }
         });
+
         armorImgGroup.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
-            public void handle(DragEvent event) {
-                onDragDropped(event,armorLbl,armorImgGroup);
+            public void handle(DragEvent e) {
+                AllCustomHandler.onDragDropped(e, armorLbl, armorImgGroup, inventoryPane);
             }
         });
-        //TODO: Allow Only Weapons with the same Damatype as Character to be equipped
-        weaponImgGroup.setOnMouseReleased(new EventHandler<MouseEvent>() {
+        weaponImgGroup.setOnDragDone(new EventHandler<DragEvent>() {
             @Override
-            public void handle(MouseEvent event) {
-
+            public void handle(DragEvent e) {
+                AllCustomHandler.onEquipDone(e, inventoryPane);
             }
         });
+
+        armorImgGroup.setOnDragDone(new EventHandler<DragEvent>() {
+            @Override
+            public void handle(DragEvent e) {
+                AllCustomHandler.onEquipDone(e, inventoryPane);
+            }
+        });
+
 
         Button unequipAllButton = new Button("Unequipped All");
         unequipAllButton.setOnAction(event -> AllCustomHandler.unEquipped());
