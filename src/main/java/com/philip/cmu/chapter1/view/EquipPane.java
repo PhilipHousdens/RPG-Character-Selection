@@ -126,7 +126,7 @@ public class EquipPane extends ScrollPane {
             }
         });
 
-        Button unequipAllButton = new Button("Unequip All");
+        Button unequipAllButton = new Button("Unequipped All");
         unequipAllButton.setOnAction(new EventHandler<ActionEvent>() {
             //TODO: make it so that it goes back to the inventory
             @Override
@@ -147,7 +147,6 @@ public class EquipPane extends ScrollPane {
             }
         });
         equipmentInfoPane.getChildren().addAll(weaponLbl, weaponImgGroup, armorLbl, armorImgGroup, unequipAllButton);
-
         return equipmentInfoPane;
     }
 

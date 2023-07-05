@@ -1,6 +1,7 @@
 package com.philip.cmu.chapter1.controller;
 
 import com.philip.cmu.chapter1.Launcher;
+import com.philip.cmu.chapter1.model.DamageType;
 import com.philip.cmu.chapter1.model.character.BasedCharacter;
 import com.philip.cmu.chapter1.model.item.Armor;
 import com.philip.cmu.chapter1.model.item.BasedEqiupment;
@@ -106,6 +107,31 @@ public class AllCustomHandler {
 
         //Adding the Item back to the inventory
         inventoryPane.addItem(retrievedEquipment);
+    }
+    public static boolean checkClassCompatibility(BasedCharacter chr, BasedEqiupment item) {
+        boolean check = false;
+        if (chr.getName().equals("MagicChar1")) {
+            if (item.getClass().getSimpleName().equals("Weapon")) {
+                check = ((Weapon) item).getDamageType().equals(DamageType.magical);
+            } else {
+                check = true;
+            }
+        }
+        if (chr.getName().equals("PhysicalChar1")) {
+            if (item.getClass().getSimpleName().equals("Weapon")) {
+                check = ((Weapon) item).getDamageType().equals(DamageType.physical);
+            } else {
+                check = true;
+            }
+        }
+        if (chr.getName().equals("BattleMageChar1")) {
+            if (item.getClass().getSimpleName().equals("Weapon")) {
+                check = true;
+            } else {
+                check = false;
+            }
+        }
+        return check;
     }
 
 
