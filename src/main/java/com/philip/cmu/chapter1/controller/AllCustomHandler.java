@@ -41,7 +41,8 @@ public class AllCustomHandler {
     public static void onDragOver(DragEvent event, String type) {
         Dragboard dragboard = event.getDragboard();
         BasedEqiupment retrievedEquipment = (BasedEqiupment) dragboard.getContent(BasedEqiupment.DATA_FORMAT);
-        if (dragboard.hasContent(BasedEqiupment.DATA_FORMAT) && retrievedEquipment.getClass().getSimpleName().equals(type)) {
+        BasedCharacter character = Launcher.getMainCharacter();
+        if (dragboard.hasContent(BasedEqiupment.DATA_FORMAT) && retrievedEquipment.getClass().getSimpleName().equals(type) && checkClassCompatibility(character, retrievedEquipment)) {
             event.acceptTransferModes(TransferMode.MOVE);
         }
     }
@@ -80,7 +81,10 @@ public class AllCustomHandler {
             dragCompleted = true;
         }
         event.setDropCompleted(dragCompleted);
-
+        if (!dragCompleted) {
+            BasedEqiupment retrievedEquipment = (BasedEqiupment) dragboard.getContent(BasedEqiupment.DATA_FORMAT);
+            InP.addItem(retrievedEquipment);
+        }
     }
 
 
