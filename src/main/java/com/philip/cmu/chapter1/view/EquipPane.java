@@ -106,14 +106,14 @@ public class EquipPane extends ScrollPane {
         weaponImgGroup.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent e) {
-                AllCustomHandler.onDragDropped(e, weaponLbl, weaponImgGroup, inventoryPane);
+                AllCustomHandler.onDragDropped(e, weaponLbl, weaponImgGroup);
             }
         });
 
         armorImgGroup.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent e) {
-                AllCustomHandler.onDragDropped(e, armorLbl, armorImgGroup, inventoryPane);
+                AllCustomHandler.onDragDropped(e, armorLbl, armorImgGroup);
             }
         });
         weaponImgGroup.setOnDragDone(new EventHandler<DragEvent>() {
@@ -132,7 +132,7 @@ public class EquipPane extends ScrollPane {
 
 
         Button unequipAllButton = new Button("Unequipped All");
-        unequipAllButton.setOnAction(event -> AllCustomHandler.unEquipped());
+        unequipAllButton.setOnAction((new AllCustomHandler.UnEquipAll()));
         equipmentInfoPane.getChildren().addAll(weaponLbl, weaponImgGroup, armorLbl, armorImgGroup, unequipAllButton);
         return equipmentInfoPane;
     }

@@ -49,7 +49,7 @@ public class InventoryPane extends ScrollPane{
         return inventoryInfoPane;
     }
     private void onDragDropped(DragEvent event, BasedEqiupment eqiupment) {
-        AllCustomHandler.onDragDropped(event,null,null,this);
+        AllCustomHandler.onDragDropped(event,null,null);
     }
     public void addItem(BasedEqiupment eqiupment) {
         if (!eqiupmentArray.contains(eqiupment)) {

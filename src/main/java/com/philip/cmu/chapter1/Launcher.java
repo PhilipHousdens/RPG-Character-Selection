@@ -24,19 +24,12 @@ public class Launcher extends Application {
     private static ArrayList<BasedEqiupment> allEquipments;
     private static Weapon equippedWeapon = null;
     private static Armor equippedArmor = null;
-    private static Weapon unequippedWeapon = null;
-    private static Armor unequippedArmor = null;
     private static CharacterPane characterPane = null;
-
-
     private static EquipPane equipPane = null;
 
 
     private static InventoryPane inventoryPane = null;
 
-    public static Scene getMainScene() {
-        return mainScene;
-    }
 
     public static ArrayList<BasedEqiupment> getAllEquipments() {
         return allEquipments;
@@ -48,34 +41,6 @@ public class Launcher extends Application {
 
     public static Armor getEquippedArmor() {
         return equippedArmor;
-    }
-
-    public static CharacterPane getCharacterPane() {
-        return characterPane;
-    }
-
-    public static void setMainScene(Scene mainScene) {
-        Launcher.mainScene = mainScene;
-    }
-
-    public static EquipPane getEquipPane() {
-        return equipPane;
-    }
-
-    public static InventoryPane getInventoryPane() {
-        return inventoryPane;
-    }
-    public static void setInventoryPane(InventoryPane inventoryPane) {
-        Launcher.inventoryPane = inventoryPane;
-    }
-
-
-    public static void setEquipPane(EquipPane equipPane) {
-        Launcher.equipPane = equipPane;
-    }
-
-    public static void setCharacterPane(CharacterPane characterPane) {
-        Launcher.characterPane = characterPane;
     }
 
     public static void setAllEquipments(ArrayList<BasedEqiupment> allEquipments) {
@@ -90,8 +55,6 @@ public class Launcher extends Application {
         Launcher.equippedArmor = equippedArmor;
     }
 
-    public static void setUnequippedWeapon(Weapon unequippedWeapon) {Launcher.unequippedWeapon = unequippedWeapon;}
-    public static void setUnequippedArmor(Armor unequippedArmor) {Launcher.unequippedArmor = unequippedArmor;}
 
     @Override
     public void start(Stage primaryStage) throws Exception {
